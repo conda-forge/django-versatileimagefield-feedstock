@@ -1,7 +1,7 @@
 
 {% set name = "django-versatileimagefield" %}
-{% set version = "1.7.1" %}
-{% set sha256 = "3b15425d37b9d74a1b4087836d41624a56617a700bd4c95c0f228da60e0cbc3a" %}
+{% set version = "1.9" %}
+{% set sha256 = "2ebdd7125cc0e275a52d1119ae1fabefd76797c9de11f26099eb427f34f0c382" %}
 
 package:
   name: {{ name|lower }}
