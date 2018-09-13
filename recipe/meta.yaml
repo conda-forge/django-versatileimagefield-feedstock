@@ -1,7 +1,7 @@
 
 {% set name = "django-versatileimagefield" %}
-{% set version = "1.7.1" %}
-{% set sha256 = "3b15425d37b9d74a1b4087836d41624a56617a700bd4c95c0f228da60e0cbc3a" %}
+{% set version = "1.10" %}
+{% set sha256 = "886d084a95775a452602e3f63201022850281414affb4b7d0e3d3ddfb5361978" %}
 
 package:
   name: {{ name|lower }}
@@ -14,7 +14,7 @@ source:
 
 build:
   noarch: python
-  number: 1
+  number: 0
   script: python -m pip install --no-deps --ignore-installed .
 
 requirements:
