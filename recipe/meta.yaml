@@ -1,7 +1,6 @@
-
 {% set name = "django-versatileimagefield" %}
-{% set version = "1.10" %}
-{% set sha256 = "886d084a95775a452602e3f63201022850281414affb4b7d0e3d3ddfb5361978" %}
+{% set version = "2.2" %}
+{% set sha256 = "6569d5c3e13c69ab8912ba5100084aa5abcdcffb8d1f5abc085b226e7bbd65b3" %}
 
 package:
   name: {{ name|lower }}
@@ -15,7 +14,7 @@ source:
 build:
   noarch: python
   number: 0
-  script: python -m pip install --no-deps --ignore-installed .
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   host:
@@ -26,20 +25,18 @@ requirements:
     - python
     - django >=1.8
     - pillow >=2.4.0,<6.0.0
-    
+
 test:
   commands:
     - python -c "import django; from django.conf import settings; settings.configure(INSTALLED_APPS=['versatileimagefield']); django.setup(); import versatileimagefield; import versatileimagefield.datastructures"
-    
+
 
 about:
   home: https://github.com/respondcreate/django-versatileimagefield
   license: MIT
   license_family: MIT
-  license_file: '{{ environ["RECIPE_DIR"] }}/LICENSE'   #https://github.com/respondcreate/django-versatileimagefield/issues/107
-  summary: 'A drop-in replacement for django ImageField that
-  provides a flexible, intuitive and easily-extensible interface 
-  for quickly creating new images from the one assigned to the field.'
+  license_file: {{ environ["RECIPE_DIR"] }}/LICENSE     #https://github.com/respondcreate/django-versatileimagefield/issues/107
+  summary: A drop-in replacement for django ImageField that provides a flexible, intuitive and easily-extensible interface for quickly creating new images from the one assigned to the field.
   description: |
     A drop-in replacement for django's ImageField that provides a 
     flexible, intuitive and easily-extensible interface for creating 
