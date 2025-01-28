@@ -9,25 +9,27 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
   noarch: python
-  number: 0
-  script: python -m pip install --no-deps --ignore-installed .
+  number: 1
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   host:
     - pip
-    - python
+    - python {{ python_min }}
     - setuptools
   run:
-    - python
+    - python >={{ python_min }}
     - django >=1.8
     - pillow >=2.4.0,<6.0.0
     
 test:
+  requires:
+    - python {{ python_min }}
   commands:
     - python -c "import django; from django.conf import settings; settings.configure(INSTALLED_APPS=['versatileimagefield']); django.setup(); import versatileimagefield; import versatileimagefield.datastructures"
     
